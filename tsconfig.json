@@ -1,0 +1,15 @@
+{ 
+  "type": "module",
+  "compilerOptions": {
+    "removeComments": true,
+    "baseUrl": "./src",
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "noImplicitAny": false,    
+    "jsx": "react",
+    "downlevelIteration": true
+  }
+}

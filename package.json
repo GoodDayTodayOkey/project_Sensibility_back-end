@@ -1,0 +1,48 @@
+{
+  "name": "project_Sensibility_back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "db": "su -c 'service mongod start & mongo sensibility'",
+    "dev": "better-npm-run dev & better-npm-run server",
+    "clean": "killall node"
+  },
+  "betterScripts": {
+    "dev": "webpack --config webpack.config.js",
+    "server": "nodemon -r ./dist/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoodDayTodayOkey/project_Sensibility_back-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoodDayTodayOkey/project_Sensibility_back-end/issues"
+  },
+  "homepage": "https://github.com/GoodDayTodayOkey/project_Sensibility_back-end#readme",
+  "dependencies": {
+    "apollo-server-express": "^2.9.15",
+    "better-npm-run": "^0.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.5.8",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.4",
+    "nodemon": "^2.0.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.4",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^3.3.14",
+    "@types/mongoose": "^5.5.38",
+    "npm-run-all": "^4.1.5"
+  }
+}
