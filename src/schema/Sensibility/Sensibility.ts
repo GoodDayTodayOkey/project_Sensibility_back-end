@@ -1,46 +1,55 @@
-import * as graphql from 'graphql';
-import { Comment, Company, User } from '../../models'
-import { CommentType } from '../index';
-
-const { GraphQLObjectType, GraphQLID, GraphQLFloat, GraphQLList } = graphql;
+import { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList, GraphQLFloat } from 'graphql';
+import { Comment, Company, User, commentType, Sensibility } from '../index'
 
 class SensibilitySchema {
   public name = 'Sensibility';
-  public fields = () => ({
-    id: { type: GraphQLID },
-    availableGoodwill: {
-      type: GraphQLFloat,
-      resolve(parent, args) {
-        return User.find({});
-      }
-    },
-    availableHostility: {
-      type: GraphQLFloat,
-      resolve(parent, args) {
-        return User.find({});
-      }
-    },
-    commonGoodwill: {
-      type: GraphQLFloat,
-      resolve(parent, args) {
-        return Company.find({});
-      }
-    },
-    commonHostility: {
-      type: GraphQLFloat,
-      resolve(parent, args) {
-        return Company.find({});
-      }
-    },
-    commentsHistoryID: {
-      type: new GraphQLList(CommentType),
-      resolve(parent, args) {
-        return Comment.find({});
-      }
-    },
-  });
+  public fields = () => (sensibilityFields);
 }
 
-const SensibilityType = new GraphQLObjectType(new SensibilitySchema());
+const sensibilityType = new GraphQLObjectType(new SensibilitySchema());
 
-export default SensibilityType;
+const sensibilityFields = {
+  id: { type: GraphQLID },
+  availableGoodwill: {
+    type: GraphQLFloat,
+    resolve(parent, args) {
+      return User.find({});
+    }
+  },
+  availableHostility: {
+    type: GraphQLFloat,
+    resolve(parent, args) {
+      return User.find({});
+    }
+  },
+  commonGoodwill: {
+    type: GraphQLFloat,
+    resolve(parent, args) {
+      return Company.find({});
+    }
+  },
+  commonHostility: {
+    type: GraphQLFloat,
+    resolve(parent, args) {
+      return Company.find({});
+    }
+  },
+  commentsHistoryID: {
+    type: new GraphQLList(commentType),
+    resolve(parent, args) {
+      return Comment.find({});
+    }
+  },
+}
+
+const sensibilityQuery = {
+  findSensibility: {
+    type: sensibilityType,
+    args: { login: { type: GraphQLString }, password: { type: GraphQLString } },
+    resolve(parent, args) {
+      return Sensibility.findOne({ ...args });
+    }
+  },
+}
+
+export { sensibilityType, sensibilityFields, sensibilityQuery }

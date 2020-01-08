@@ -16,6 +16,6 @@ const SensibilitySchema: Schema = new Schema({
   commentsHistoryID: [String],
 })
 
-const Sensibility: Model<ISensibilityModel> = model<ISensibilityModel>(`Sensibility`, SensibilitySchema)
+const Sensibility: Model<ISensibilityModel> = model<ISensibilityModel>(`Sensibility`, SensibilitySchema);
 
 export default Sensibility;
