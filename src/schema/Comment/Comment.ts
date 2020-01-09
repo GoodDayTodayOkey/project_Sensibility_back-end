@@ -29,7 +29,7 @@ const commentFields = {
 }
 
 const commentQuery = {
-  authUser: {
+  authComment: {
     type: commentType,
     args: { login: { type: GraphQLString }, password: { type: GraphQLString } },
     resolve(parent, args) {
